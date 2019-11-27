@@ -98,8 +98,6 @@ void updateLeapMotionInputs() {
   }
 }
 
-
-
 class Moon{
   float ysurf[] = new float[width];
   PShape moonSurface;
@@ -116,7 +114,7 @@ class Moon{
     moonSurface.fill(highlight);
     moonSurface.vertex(0,height);
     for (int j=0; j<width; j++) {
-      ysurf[j] = height-noise(j*.02)*height*.3;
+      ysurf[j] = height-noise(j*.02)*height*.25-height/20;
       moonSurface.vertex(j, ysurf[j]);
     }
     moonSurface.vertex(width,height);
@@ -198,8 +196,10 @@ class Spacecraft{
       stopRates();
     }
 
-    if(xloc < 0 || xloc > width){
-      randomlySetSpacecraft();
+    if(xloc <= 0){
+      xloc = width;
+    } else if (xloc >= width) {
+      xloc = 0;
     }
   }
 
