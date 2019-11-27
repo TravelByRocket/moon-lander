@@ -208,6 +208,8 @@ class Spacecraft{
     yloc = random(height/5, height*2/5);
     xvel = random(1) - 0.5;
     yvel = random(1) - 0.5;
+    theta = 90;
+    omega = 0;
   }
 
   void engineForces(){
